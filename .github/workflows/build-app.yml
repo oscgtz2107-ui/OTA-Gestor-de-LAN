@@ -1,0 +1,72 @@
+name: Compilar app Android
+
+# Este repositorio es PUBLICO: los minutos de Actions son gratis e ilimitados,
+# que es la razon de compilar aqui y no en el repo privado de la app.
+#
+# ⚠️ SEGURIDAD — reglas que NO deben relajarse:
+#   · El codigo fuente se descarga con una DEPLOY KEY DE SOLO LECTURA limitada
+#     al repo APP-Gestor-de-LAN. Si se filtrase, el alcance es ese unico repo:
+#     ni el firmware ni los demas repositorios quedan expuestos.
+#   · Aqui NO vive el keystore de firma. Se compilan APK de DEPURACION.
+#     Quien tenga el keystore puede publicar actualizaciones que Android acepta
+#     como autenticas, y si se pierde no se puede volver a actualizar la app en
+#     Play Store. La firma de release se hace fuera de este repositorio.
+#   · No usar `pull_request_target` ni interpolar entradas de usuario en `run:`:
+#     son las dos vias habituales de fuga de secretos en repos publicos.
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Rama o tag del repo de la app'
+        required: false
+        default: 'main'
+  schedule:
+    # Compilacion nocturna para detectar rupturas sin esperar a una release.
+    - cron: '0 6 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el codigo de la app (solo lectura)
+        uses: actions/checkout@v4
+        with:
+          repository: oscgtz2107-ui/APP-Gestor-de-LAN
+          ref: ${{ github.event.inputs.ref || 'main' }}
+          ssh-key: ${{ secrets.APP_REPO_DEPLOY_KEY }}
+          persist-credentials: false
+
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Configurar Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11.1'
+
+      # Configuracion de Firebase. No es un secreto critico (viaja dentro del
+      # APK igualmente); lo que protege de verdad son las reglas de la base.
+      # Si no esta configurado, la app compila en modo SOLO LOCAL.
+      - name: Inyectar google-services.json
+        if: ${{ secrets.GOOGLE_SERVICES_JSON != '' }}
+        run: echo '${{ secrets.GOOGLE_SERVICES_JSON }}' > app/google-services.json
+
+      - name: Verificar el contrato E2E con el firmware
+        run: gradle testDebugUnitTest --no-daemon
+
+      - name: Compilar APK de depuracion
+        run: gradle assembleDebug --no-daemon
+
+      - name: Publicar artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: gestor-de-lan-debug
+          path: app/build/outputs/apk/debug/*.apk
+          retention-days: 30
