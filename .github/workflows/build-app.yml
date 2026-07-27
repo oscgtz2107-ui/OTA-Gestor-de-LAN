@@ -31,6 +31,15 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      # El secreto se mapea a variable de entorno por DOS motivos:
+      #
+      #  1. `secrets` NO esta disponible en un `if:` de paso — GitHub responde
+      #     "Unrecognized named-value: 'secrets'" y ni siquiera deja lanzar el
+      #     workflow. Con `env` si se puede consultar.
+      #  2. Interpolar un secreto dentro de `run:` lo mete en la linea de
+      #     ordenes. Como variable de entorno no aparece ahi.
+      GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
     steps:
       - name: Descargar el codigo de la app (solo lectura)
         uses: actions/checkout@v4
@@ -55,8 +64,8 @@ jobs:
       # APK igualmente); lo que protege de verdad son las reglas de la base.
       # Si no esta configurado, la app compila en modo SOLO LOCAL.
       - name: Inyectar google-services.json
-        if: ${{ secrets.GOOGLE_SERVICES_JSON != '' }}
-        run: echo '${{ secrets.GOOGLE_SERVICES_JSON }}' > app/google-services.json
+        if: env.GOOGLE_SERVICES_JSON != ''
+        run: printf '%s' "$GOOGLE_SERVICES_JSON" > app/google-services.json
 
       - name: Verificar el contrato E2E con el firmware
         run: gradle testDebugUnitTest --no-daemon
