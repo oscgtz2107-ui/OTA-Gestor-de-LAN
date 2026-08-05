@@ -10,21 +10,21 @@ Aquí **no vive el producto**: solo se compila la app y se publican las versione
 | Ruta | Para qué |
 |---|---|
 | `.github/workflows/build-app.yml` | Compila la app Android en depuración (minutos gratis por ser público) |
-| `index.html` | Página de descarga de la app, servida en `gestor-de-lan.com` |
+| `index.html` + `firebase.json` | Página de descarga de la app, servida por **Firebase Hosting** en `gestor-de-lan.web.app` |
 | `app/manifest.json` | Manifiesto de versión de la app (lo consulta la app para avisar de actualizaciones) |
 | `firmware/manifest.json` | Manifiesto OTA que consultan las placas |
 | `firmware/*.bin` | Binarios firmados del firmware |
-| `CNAME` | Sirve `gestor-de-lan.com` por GitHub Pages |
 
 ## Distribución de la app
 
-La app se descarga desde `gestor-de-lan.com` (la página lee `app/manifest.json`), y el APK se
-publica como **asset de un GitHub Release** de este repo (URL estable
-`releases/latest/download/gestor-de-lan.apk`), no se commitea al git.
+La app se descarga desde **`gestor-de-lan.web.app`** (Firebase Hosting; la página lee
+`app/manifest.json`), y el APK se publica como **asset de un GitHub Release** de este repo (URL
+estable `releases/latest/download/gestor-de-lan.apk`), no se commitea al git.
 
 Quien publica una versión es el **workflow de release del repositorio privado** de la app: allí
-vive el keystore, compila el APK **firmado**, crea el Release aquí, actualiza `app/manifest.json`
-y envía el aviso por FCM. Aquí no se firma nada ni se sube ningún APK a mano.
+vive el keystore, compila el APK **firmado**, crea el Release aquí, actualiza `app/manifest.json`,
+**despliega la web a Firebase Hosting** y envía el aviso por FCM. Aquí no se firma nada ni se sube
+ningún APK a mano.
 
 A diferencia del firmware, el manifiesto de la app **no lleva firma propia**: la autenticidad la
 garantiza la **firma Android del APK** — el sistema rechaza instalar encima una app firmada con
