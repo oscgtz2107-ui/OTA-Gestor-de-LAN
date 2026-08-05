@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestor de LAN — Descargar</title>
+  <meta name="description" content="Descarga la app Gestor de LAN para Android.">
+  <style>
+    :root{
+      --bg:#0A0A0F; --surface:#12141C; --cyan:#00F0FF; --cyan-dim:#274B57;
+      --text:#E6F1F5; --text-dim:#9FB2C2; --green:#00FF88; --amber:#FFC247;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:var(--bg); color:var(--text); min-height:100vh;
+      font-family:ui-monospace,'JetBrains Mono','Cascadia Code','Courier New',monospace;
+      display:flex; flex-direction:column; align-items:center;
+      padding:32px 20px 48px; gap:28px;
+    }
+    header{text-align:center; margin-top:16px}
+    h1{
+      color:var(--cyan); font-size:clamp(24px,6vw,40px); letter-spacing:2px;
+      margin:0 0 6px; text-shadow:0 0 12px rgba(0,240,255,.35);
+    }
+    .subtitle{color:var(--text-dim); font-size:14px; letter-spacing:1px; margin:0}
+    .card{
+      background:var(--surface); border:1px solid var(--cyan-dim);
+      /* Esquina cortada en diagonal: el marco "HUD marcado" de la app. */
+      clip-path:polygon(0 16px,16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%);
+      width:100%; max-width:520px; padding:28px 24px;
+    }
+    .row{display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap}
+    .label{color:var(--text-dim); font-size:12px; letter-spacing:1px; text-transform:uppercase}
+    .version{color:var(--cyan); font-size:28px; font-weight:700}
+    .notes{color:var(--text-dim); font-size:14px; line-height:1.5; margin:16px 0 24px; white-space:pre-line}
+    a.download{
+      display:block; text-align:center; text-decoration:none; cursor:pointer;
+      background:var(--cyan); color:#00252B; font-weight:700; letter-spacing:1px;
+      padding:16px; font-size:16px; border:none;
+      clip-path:polygon(0 10px,10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);
+      transition:box-shadow .2s;
+    }
+    a.download:hover{box-shadow:0 0 20px rgba(0,240,255,.5)}
+    a.download[aria-disabled="true"]{
+      background:transparent; color:var(--text-dim); border:1px solid var(--cyan-dim);
+      pointer-events:none;
+    }
+    .meta{color:var(--text-dim); font-size:12px; margin-top:14px; text-align:center}
+    .steps{max-width:520px; width:100%; color:var(--text-dim); font-size:13px; line-height:1.7}
+    .steps h2{color:var(--text); font-size:14px; letter-spacing:1px; text-transform:uppercase; margin:0 0 8px}
+    .steps ol{margin:0; padding-left:20px}
+    footer{color:var(--text-dim); font-size:11px; letter-spacing:1px; opacity:.7; margin-top:8px; text-align:center}
+    code{color:var(--cyan)}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>GESTOR DE LAN</h1>
+    <p class="subtitle">Panel de control de acceso a red</p>
+  </header>
+
+  <section class="card">
+    <div class="row">
+      <span class="label">App para Android</span>
+      <span class="version" id="version">—</span>
+    </div>
+    <p class="notes" id="notes">Cargando la última versión…</p>
+    <a class="download" id="download" href="https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases/latest/download/gestor-de-lan.apk">Descargar APK</a>
+    <p class="meta" id="meta">Android 8.0 o superior</p>
+  </section>
+
+  <section class="steps">
+    <h2>Cómo instalar</h2>
+    <ol>
+      <li>Abre esta página <strong>en el móvil</strong> y pulsa <em>Descargar APK</em>.</li>
+      <li>Al abrir el archivo, Android pedirá permiso para instalar apps de
+          <em>orígenes desconocidos</em>: concédelo solo a tu navegador.</li>
+      <li>Instala y abre la app. Empareja tu placa escaneando su QR.</li>
+    </ol>
+    <p>Las siguientes versiones se instalan encima sin perder datos, y la app te
+       avisará cuando haya una nueva.</p>
+  </section>
+
+  <footer>gestor-de-lan.com</footer>
+
+  <script>
+    // Lee el manifiesto publicado por el workflow de release y rellena la página.
+    // Es la misma fuente que consulta la app para avisar de actualizaciones.
+    fetch('app/manifest.json', {cache:'no-store'})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(m){
+        var v = m && m.latest;
+        var version = document.getElementById('version');
+        var notes = document.getElementById('notes');
+        var dl = document.getElementById('download');
+        var meta = document.getElementById('meta');
+        if(!v){ notes.textContent = 'No se pudo leer la información de versión.'; return; }
+        var published = v.build && v.versionCode > 1;
+        version.textContent = published ? ('v' + v.versionName) : '—';
+        notes.textContent = v.notes || '';
+        if(published){
+          if(v.url) dl.setAttribute('href', v.url);
+          dl.textContent = 'Descargar APK  (v' + v.versionName + ')';
+          meta.textContent = 'Android ' + (v.minSdk >= 26 ? '8.0' : '') + ' o superior'
+            + (v.build ? '  ·  ' + v.build : '');
+        } else {
+          dl.textContent = 'Aún no publicada';
+          dl.setAttribute('aria-disabled','true');
+          meta.textContent = 'La descarga estará disponible con la primera versión.';
+        }
+      })
+      .catch(function(){
+        document.getElementById('notes').textContent =
+          'No se pudo comprobar la última versión. Prueba el botón de descarga.';
+      });
+  </script>
+</body>
+</html>
