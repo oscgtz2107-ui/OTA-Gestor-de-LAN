@@ -2,12 +2,12 @@
   "_comentario": "Manifiesto de version de la app. Lo publica el workflow de release del repo privado.",
   "_formato": 1,
   "latest": {
-    "versionName": "0.2.3",
-    "versionCode": 203,
+    "versionName": "0.2.4",
+    "versionCode": 204,
     "build": "2026-08-06",
     "url": "https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases/latest/download/gestor-de-lan.apk",
-    "sha256": "b2f3b555dd836952dd7425f63d7472f96ce1daf41aff25dd741fb4a9f108dce0",
+    "sha256": "8f82dc00f567512e15e1b30b1ee018e7983767886536746af991685f07795752",
     "minSdk": 26,
-    "notes": "Conexion mas estable: se acabaron los avisos de desconexion al navegar entre pestanas (Ajustes, Historial)."
+    "notes": "Actualizaciones dentro de la app (sin navegador, con barra de progreso en la notificacion) y conexion mas estable al navegar entre pestanas."
   }
 }
