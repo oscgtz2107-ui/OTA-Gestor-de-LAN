@@ -2,12 +2,12 @@
   "_comentario": "Manifiesto de version de la app. Lo publica el workflow de release del repo privado.",
   "_formato": 1,
   "latest": {
-    "versionName": "0.2.6",
-    "versionCode": 206,
+    "versionName": "0.2.7",
+    "versionCode": 207,
     "build": "2026-08-07",
     "url": "https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases/latest/download/gestor-de-lan.apk",
-    "sha256": "82fc63bd4be2f28ecc1a2b8abb8052e2818d60e96a150b55615560f11fb39800",
+    "sha256": "5486dab101b5955770ceeec2a61f22f148e0b8087c0370aadcaaa2e29f414300",
     "minSdk": 26,
-    "notes": "WiFi de invitados configurable: cambia el nombre y la contrasena del punto de acceso de la placa desde Ajustes. Ademas, Revocar ahora devuelve el dispositivo a Solicitud en vez de bloquearlo."
+    "notes": "La notificación de actualización ya no te lleva al navegador: descarga e instala dentro de la app, como el banner. Y se corrigen cierres inesperados relacionados con la actualización."
   }
 }
