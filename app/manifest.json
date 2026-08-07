@@ -2,12 +2,12 @@
   "_comentario": "Manifiesto de version de la app. Lo publica el workflow de release del repo privado.",
   "_formato": 1,
   "latest": {
-    "versionName": "0.2.11",
-    "versionCode": 211,
+    "versionName": "0.2.12",
+    "versionCode": 212,
     "build": "2026-08-07",
     "url": "https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases/latest/download/gestor-de-lan.apk",
-    "sha256": "9d4c10ae55e532167032f394bd353d87e49b038f2635ed165522ac729a639ea7",
+    "sha256": "4a1b67a8dd161123a99bba3cf9ab930af2f5aa84016c23bcc5d191bf8691d6fe",
     "minSdk": 26,
-    "notes": "Nueva navegación estilo escritorio remoto: al abrir la app ves la lista de tus gestores; tocas uno, metes la contraseña UNA vez y entras; el menú lateral tiene tu cuenta y los ajustes de la app. 'Salir' vuelve a la lista y cierra la sesión de esa placa."
+    "notes": "Los dispositivos y solicitudes ahora se separan en dos grupos: 'Red de invitados' (conectados al WiFi de la placa) y 'Red local' (conectados al router). Además: WiFi de invitados con más alcance y un equipo ya aprobado no vuelve a pedir autorización al reconectar (requiere la placa actualizada)."
   }
 }
