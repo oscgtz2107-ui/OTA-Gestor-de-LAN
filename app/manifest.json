@@ -2,12 +2,12 @@
   "_comentario": "Manifiesto de version de la app. Lo publica el workflow de release del repo privado.",
   "_formato": 1,
   "latest": {
-    "versionName": "0.2.7",
-    "versionCode": 207,
+    "versionName": "0.2.8",
+    "versionCode": 208,
     "build": "2026-08-07",
     "url": "https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases/latest/download/gestor-de-lan.apk",
-    "sha256": "5486dab101b5955770ceeec2a61f22f148e0b8087c0370aadcaaa2e29f414300",
+    "sha256": "691072c298539c34980c157a99844765963322ebee22e787af82d9aca4859296",
     "minSdk": 26,
-    "notes": "La notificación de actualización ya no te lleva al navegador: descarga e instala dentro de la app, como el banner. Y se corrigen cierres inesperados relacionados con la actualización."
+    "notes": "Corrige el cierre inesperado al abrir la pestaña Dispositivos (clave duplicada en la lista cuando había un dispositivo pendiente)."
   }
 }
