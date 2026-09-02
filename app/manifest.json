@@ -2,12 +2,12 @@
   "_comentario": "Manifiesto de version de la app. Lo publica el workflow de release del repo privado.",
   "_formato": 1,
   "latest": {
-    "versionName": "0.3.2",
-    "versionCode": 302,
+    "versionName": "0.3.3",
+    "versionCode": 303,
     "build": "2026-09-02",
     "url": "https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases/latest/download/gestor-de-lan.apk",
-    "sha256": "f5ba90303e394021b513aa88c360dafdd42ddac5128700fa6191a54c0d0bd2e3",
+    "sha256": "44eef9b64d8256ffe61bee12af72479859854a18f726611de35146ddbba3fb42",
     "minSdk": 26,
-    "notes": "Corrige el emparejamiento por punto de acceso: la app ya se une sola a la red de la placa usando la clave que viene en el QR. Antes fallaba con un error del sistema y el texto afirmaba que la red no tenía contraseña."
+    "notes": "Arregla el reinicio de la placa al iniciar sesion y el falso 'No se alcanza la placa'. Anade el ojito para ver la contrasena y corrige los textos del boton, que decian lo contrario de lo que hace la placa."
   }
 }
