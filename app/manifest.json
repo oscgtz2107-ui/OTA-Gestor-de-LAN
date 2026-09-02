@@ -2,12 +2,12 @@
   "_comentario": "Manifiesto de version de la app. Lo publica el workflow de release del repo privado.",
   "_formato": 1,
   "latest": {
-    "versionName": "0.3.0",
-    "versionCode": 300,
+    "versionName": "0.3.1",
+    "versionCode": 301,
     "build": "2026-09-02",
     "url": "https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases/latest/download/gestor-de-lan.apk",
-    "sha256": "cbafc94dfa7e3939ede9d6523627e43a2dc0ce41b61480a6daaa3606fd3825eb",
+    "sha256": "1d85bacb835a0c60163bb0378ae78be05997eb50c5ba00de7b720f02e78f7669",
     "minSdk": 26,
-    "notes": "Asistente de emparejamiento rediseñado: barra de cuatro fases, el gestor dibujado en cada paso y, en los pasos donde miras el aparato, qué deberías estar viendo en su pantalla. El arranque deja de pedirte elegir método.\n\nAviso nuevo cuando el router reparte direcciones: te dice que lo desactives para tener control de la LAN, con la IP de quien lo hace, y desaparece solo al apagarlo.\n\nAl emparejar, la app entrega a la placa quién la administra, de modo que una placa de fábrica queda vinculada a tu cuenta sin pasos manuales."
+    "notes": "Al escanear el QR aparece un recuadro de enfoque, con las esquinas marcadas y el resto atenuado, para saber dónde colocar el código de la pantalla de la placa. Se lee solo: no hay que pulsar nada."
   }
 }
