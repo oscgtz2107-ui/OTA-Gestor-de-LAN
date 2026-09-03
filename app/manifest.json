@@ -2,12 +2,12 @@
   "_comentario": "Manifiesto de version de la app. Lo publica el workflow de release del repo privado.",
   "_formato": 1,
   "latest": {
-    "versionName": "0.4.1",
-    "versionCode": 401,
+    "versionName": "0.5.0",
+    "versionCode": 500,
     "build": "2026-09-03",
     "url": "https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases/latest/download/gestor-de-lan.apk",
-    "sha256": "42a0f796625eadec8b76434183465a4318c4869960ad7314453fdac0c313551c",
+    "sha256": "a6e9005850a416190cac7d390077aaa5f901e27e9a3e51c635916679c1228e85",
     "minSdk": 26,
-    "notes": "Nueva seccion en Ajustes: ver quien administra la placa desde fuera y quitar a quien ya no deba. Cada uno aparece con el correo de su cuenta."
+    "notes": "Acceso a la cuenta rehecho: recuperar la contrasena olvidada, repetir la contrasena al registrarse, ver lo que escribes, errores bajo su campo y confirmacion del correo. Y al abrir la app por primera vez se ofrece crear la cuenta antes de emparejar, que es lo que hace que la placa se vea desde fuera. Se puede saltar."
   }
 }
