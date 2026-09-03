@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestor de LAN — Software de terceros</title>
+  <meta name="description" content="Componentes de terceros incluidos en el firmware del Gestor de LAN, sus licencias y dónde obtener su código fuente.">
+  <style>
+    :root{
+      --bg:#0A0A0F; --surface:#12141C; --cyan:#00F0FF; --cyan-dim:#274B57;
+      --text:#E6F1F5; --text-dim:#9FB2C2;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:var(--bg); color:var(--text); min-height:100vh;
+      font-family:ui-monospace,'JetBrains Mono','Cascadia Code','Courier New',monospace;
+      display:flex; flex-direction:column; align-items:center;
+      padding:32px 20px 48px; gap:24px; line-height:1.6;
+    }
+    header{text-align:center; margin-top:8px}
+    h1{
+      color:var(--cyan); font-size:clamp(20px,5vw,32px); letter-spacing:2px;
+      margin:0 0 6px; text-shadow:0 0 12px rgba(0,240,255,.35);
+    }
+    .subtitle{color:var(--text-dim); font-size:13px; letter-spacing:1px; margin:0}
+    main{width:100%; max-width:760px; display:flex; flex-direction:column; gap:20px}
+    section{
+      background:var(--surface); border:1px solid var(--cyan-dim);
+      clip-path:polygon(0 16px,16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%);
+      padding:24px 22px;
+    }
+    h2{color:var(--cyan); font-size:16px; letter-spacing:1px; margin:0 0 12px}
+    p{margin:0 0 12px; font-size:14px}
+    a{color:var(--cyan)}
+    .tabla{width:100%; overflow-x:auto}
+    table{border-collapse:collapse; width:100%; font-size:13px; min-width:520px}
+    th,td{text-align:left; padding:8px 10px; border-bottom:1px solid var(--cyan-dim); vertical-align:top}
+    th{color:var(--text-dim); font-weight:600; letter-spacing:.5px}
+    code{background:#0A0A0F; padding:1px 5px; border:1px solid var(--cyan-dim); font-size:12px}
+    .nota{color:var(--text-dim); font-size:13px}
+    footer{color:var(--text-dim); font-size:12px; text-align:center}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SOFTWARE DE TERCEROS</h1>
+    <p class="subtitle">Gestor de LAN — firmware del dispositivo</p>
+  </header>
+
+  <main>
+    <section>
+      <p>
+        El firmware del Gestor de LAN incorpora software libre de terceros. Aquí se
+        dice <strong>qué</strong> lleva, <strong>bajo qué licencia</strong> y
+        <strong>dónde está su código fuente</strong>.
+      </p>
+      <p class="nota">
+        Esta página es el aviso al que remite la §8 de la licencia del producto.
+      </p>
+    </section>
+
+    <section>
+      <h2>Componentes bajo LGPL-2.1</h2>
+      <p>
+        Estos dos van enlazados estáticamente dentro del binario. La LGPL-2.1 §6
+        permite distribuirlo así a cambio de entregar lo necesario para volver a
+        enlazarlo con una versión modificada de la biblioteca.
+      </p>
+      <div class="tabla">
+        <table>
+          <tr><th>Componente</th><th>Licencia</th><th>Código fuente</th></tr>
+          <tr>
+            <td>Núcleo Arduino para ESP32<br><code>framework-arduinoespressif32</code></td>
+            <td>LGPL-2.1 o posterior</td>
+            <td><a href="https://github.com/espressif/arduino-esp32">espressif/arduino-esp32</a></td>
+          </tr>
+          <tr>
+            <td>arduinoWebSockets<br><code>links2004/WebSockets</code></td>
+            <td>LGPL-2.1</td>
+            <td><a href="https://github.com/Links2004/arduinoWebSockets">Links2004/arduinoWebSockets</a></td>
+          </tr>
+        </table>
+      </div>
+      <p style="margin-top:14px">
+        <strong>Cómo se cumple:</strong> con cada versión del firmware se publica un
+        <em>kit de reenlazado</em> — los ficheros objeto del código propio, los
+        archivos de todas las bibliotecas enlazadas, los scripts del enlazador y la
+        orden de enlace exacta con la que se produjo el binario distribuido. Con eso,
+        cualquiera puede sustituir esas bibliotecas y reconstruir el firmware.
+      </p>
+      <p class="nota">
+        El kit de cada versión se publica junto a su binario, en
+        <a href="https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases">las
+        versiones del repositorio de actualizaciones</a>. Si no encuentras el de la
+        versión que buscas, pídelo por el canal de contacto del producto.
+      </p>
+      <p class="nota">
+        <strong>Sobre la firma:</strong> las placas solo aceptan por OTA imágenes
+        firmadas, así que un binario reenlazado por un tercero será rechazado por esa
+        vía. No es un obstáculo a la licencia: por USB se flashea sin verificar firma,
+        y ahí entra sin problema. La firma protege la actualización remota de una
+        flota, no la libertad de modificar el aparato que uno tiene.
+      </p>
+    </section>
+
+    <section>
+      <h2>Componentes con licencias permisivas</h2>
+      <p>No obligan a entregar el reenlazado. Se listan porque sus licencias exigen conservar el aviso de copyright.</p>
+      <div class="tabla">
+        <table>
+          <tr><th>Componente</th><th>Licencia</th></tr>
+          <tr><td>ESP-IDF <code>framework-espidf</code></td><td>Apache-2.0</td></tr>
+          <tr><td>Mbed TLS</td><td>Apache-2.0</td></tr>
+          <tr><td>FreeRTOS</td><td>MIT</td></tr>
+          <tr><td>lwIP</td><td>BSD de 3 cláusulas</td></tr>
+          <tr><td>littlefs</td><td>BSD de 3 cláusulas</td></tr>
+          <tr><td>ArduinoJson</td><td>MIT</td></tr>
+          <tr><td>TFT_eSPI</td><td>BSD de 2 cláusulas (FreeBSD)</td></tr>
+          <tr><td>QRCode</td><td>MIT</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Aplicación Android</h2>
+      <p>
+        La app se distribuye por separado. Sus dependencias principales — AndroidX,
+        Jetpack Compose, Kotlin, OkHttp y el SDK de Firebase — son Apache-2.0.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <a href="/">Volver a la descarga</a>
+  </footer>
+</body>
+</html>
