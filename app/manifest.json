@@ -2,12 +2,12 @@
   "_comentario": "Manifiesto de version de la app. Lo publica el workflow de release del repo privado.",
   "_formato": 1,
   "latest": {
-    "versionName": "0.3.3",
-    "versionCode": 303,
-    "build": "2026-09-02",
+    "versionName": "0.3.4",
+    "versionCode": 304,
+    "build": "2026-09-03",
     "url": "https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases/latest/download/gestor-de-lan.apk",
-    "sha256": "44eef9b64d8256ffe61bee12af72479859854a18f726611de35146ddbba3fb42",
+    "sha256": "32f2c7375e23f38c5404b3723e63c1465accd9fa354634e116a59663b0b1e1bc",
     "minSdk": 26,
-    "notes": "Arregla el reinicio de la placa al iniciar sesion y el falso 'No se alcanza la placa'. Anade el ojito para ver la contrasena y corrige los textos del boton, que decian lo contrario de lo que hace la placa."
+    "notes": "El escaner de QR enfoca y lee mucho antes: el analisis pasa de 640x480 a 1280x720, asi que ya no hay que pegar el movil al codigo. Ademas solo se analiza el centro del recuadro, se reenfoca solo si no lee, y el recuadro es mas pequeno."
   }
 }
