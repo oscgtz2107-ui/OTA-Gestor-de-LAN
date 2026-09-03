@@ -2,12 +2,12 @@
   "_comentario": "Manifiesto de version de la app. Lo publica el workflow de release del repo privado.",
   "_formato": 1,
   "latest": {
-    "versionName": "0.3.4",
-    "versionCode": 304,
+    "versionName": "0.4.0",
+    "versionCode": 400,
     "build": "2026-09-03",
     "url": "https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases/latest/download/gestor-de-lan.apk",
-    "sha256": "32f2c7375e23f38c5404b3723e63c1465accd9fa354634e116a59663b0b1e1bc",
+    "sha256": "b0524aec0391ea29f6765b9233d200de76f7e84854f91de65626e1269530db4d",
     "minSdk": 26,
-    "notes": "El escaner de QR enfoca y lee mucho antes: el analisis pasa de 640x480 a 1280x720, asi que ya no hay que pegar el movil al codigo. Ademas solo se analiza el centro del recuadro, se reenfoca solo si no lee, y el recuadro es mas pequeno."
+    "notes": "Varios administradores por placa. Y al entrar en la placa con la cuenta iniciada, la app se da de alta sola como administrador remoto: antes eso solo pasaba al emparejar, asi que quien emparejaba primero y creaba la cuenta despues se quedaba sin acceso desde fuera."
   }
 }
