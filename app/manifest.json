@@ -2,12 +2,12 @@
   "_comentario": "Manifiesto de version de la app. Lo publica el workflow de release del repo privado.",
   "_formato": 1,
   "latest": {
-    "versionName": "0.5.0",
-    "versionCode": 500,
+    "versionName": "0.6.0",
+    "versionCode": 600,
     "build": "2026-09-03",
     "url": "https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases/latest/download/gestor-de-lan.apk",
-    "sha256": "a6e9005850a416190cac7d390077aaa5f901e27e9a3e51c635916679c1228e85",
+    "sha256": "f6f110d9e694bea7c4bbba77578caa8bd899e5b23ae7162cac9eb04857367997",
     "minSdk": 26,
-    "notes": "Acceso a la cuenta rehecho: recuperar la contrasena olvidada, repetir la contrasena al registrarse, ver lo que escribes, errores bajo su campo y confirmacion del correo. Y al abrir la app por primera vez se ofrece crear la cuenta antes de emparejar, que es lo que hace que la placa se vea desde fuera. Se puede saltar."
+    "notes": "UX más pulida: tira hacia abajo para actualizar las listas, cargas con siluetas en vez de ruedas, transiciones suaves entre estados, y respuesta háptica al aprobar, bloquear, guardar o entrar."
   }
 }
