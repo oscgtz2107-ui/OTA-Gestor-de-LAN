@@ -1,32 +1,31 @@
 # Distribución OTA del firmware
 
-Las placas consultan `manifest.json` para saber si hay una versión nueva, descargan el `.bin`
-y **verifican su firma antes de instalarlo**.
+> ⚠️ **El manifiesto ya no vive aquí.** Está en [`../fw/manifest.json`](../fw/manifest.json).
+>
+> Este directorio está **excluido del hosting** en `firebase.json`, así que nada de lo
+> que se ponga aquí llega a servirse. El manifiesto estuvo aquí y por eso las placas
+> recibían un 404 al buscar su actualización.
 
-## Formato del manifiesto
+Las placas piden `https://gestor-de-lan.web.app/fw/manifest.json`, que es lo que lleva
+compilado el firmware (`FIRMWARE_MANIFEST_URL`). Descargan el `.bin` y **verifican su
+firma antes de instalarlo**.
+
+## Formato
+
+**Plano**, tal y como lo lee `fw_updater.cpp`. Nada de anidarlo bajo `latest`.
 
 | Campo | Qué es |
 |---|---|
-| `version` | Versión semántica del firmware (`1.2.0`) |
-| `build` | Fecha de compilación |
+| `version` | Versión semántica (`2.4.1`) |
+| `versionCode` | Entero monótono; la placa rechaza bajar de versión |
 | `url` | URL absoluta del binario |
-| `sha256` | Hash del binario — detecta descargas corruptas |
-| `signature` | **Firma del binario** (base64) — detecta binarios maliciosos |
-| `min_upgradable_from` | Versión mínima desde la que se puede saltar a esta |
+| `sha256` | Hash del `.bin`, en hex |
+| `signature` | Firma ECDSA P-256 del manifiesto, **en hex** (no base64) |
 
-## ⚠️ Por qué la firma no es opcional
+## Quién lo escribe
 
-Este repositorio es **público**. El `sha256` por sí solo **no protege**: quien pudiera publicar
-un binario malicioso publicaría también su hash correspondiente.
+`04_Herramientas/scripts/publicar_firmware_ota.py`, en el repositorio privado, que es
+donde vive la clave de firma. No se edita a mano.
 
-Lo que protege es la **firma**: cada placa lleva **embebida la clave pública** y rechaza
-cualquier binario cuya firma no valide. **La clave privada nunca sale del repositorio privado**
-y no debe existir ninguna copia en este repo ni en sus secretos.
-
-Sin esa verificación, comprometer este repositorio equivaldría a instalar firmware arbitrario en
-**todas las placas desplegadas**.
-
-## Publicación
-
-No se sube nada a mano aquí. El workflow del repositorio privado compila, firma y publica el
-binario junto con el manifiesto actualizado.
+Cada versión se publica junto al **kit de reenlazado** que exige la LGPL; ver
+[/licencias/](https://gestor-de-lan.web.app/licencias/).
