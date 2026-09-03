@@ -1,0 +1,11 @@
+{
+  "_comentario": "Manifiesto OTA. FORMATO PLANO: lo lee fw_updater.cpp tal cual. Lo publica el repo privado, donde vive la clave.",
+  "version": "2.4.1",
+  "versionCode": 20401,
+  "url": "https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases/download/fw-v2.4.1/firmware.bin",
+  "sha256": "77825e186db267ef4451d6c102b3dfae60924c710d78bb0dd7ef0f48f97eac4e",
+  "signature": "3045022100db7a086ce5b34c39edbbe38c7d71e0141a9981488000f322bcc31bcde6f02ac402200fb26d8561a2c5f4600716b52e6590dc075dd1758a231ba2369e7b5437f20710",
+  "build": "2026.08.10",
+  "min_upgradable_from": "0.0.0",
+  "notes": "Primer lanzamiento OTA"
+}
