@@ -2,12 +2,12 @@
   "_comentario": "Manifiesto de version de la app. Lo publica el workflow de release del repo privado.",
   "_formato": 1,
   "latest": {
-    "versionName": "0.4.0",
-    "versionCode": 400,
+    "versionName": "0.4.1",
+    "versionCode": 401,
     "build": "2026-09-03",
     "url": "https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases/latest/download/gestor-de-lan.apk",
-    "sha256": "b0524aec0391ea29f6765b9233d200de76f7e84854f91de65626e1269530db4d",
+    "sha256": "42a0f796625eadec8b76434183465a4318c4869960ad7314453fdac0c313551c",
     "minSdk": 26,
-    "notes": "Varios administradores por placa. Y al entrar en la placa con la cuenta iniciada, la app se da de alta sola como administrador remoto: antes eso solo pasaba al emparejar, asi que quien emparejaba primero y creaba la cuenta despues se quedaba sin acceso desde fuera."
+    "notes": "Nueva seccion en Ajustes: ver quien administra la placa desde fuera y quitar a quien ya no deba. Cada uno aparece con el correo de su cuenta."
   }
 }
