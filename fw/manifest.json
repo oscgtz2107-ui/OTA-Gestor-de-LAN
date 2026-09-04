@@ -4,8 +4,8 @@
   "versionCode": 20401,
   "url": "https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases/download/fw-v2.4.1/firmware.bin",
   "sha256": "98de9802976d96b98c4da3bcbae4c0c66a54039f398feeb8c5a5e503dfa6f905",
-  "signature": "3045022061c91abb77c4057f0b64fa3a375e47394eab346b5057d5676f9be83c503d5d420221009163138da837141757d46b330293399070203ce9f5dd01f9370d218fea22b914",
+  "signature": "3045022008faf79e514b951a3e0cf1ad3f6323a3a6a33aaba014471462f287b71f911ba7022100dd6f47c13a04d0d5b552a55b2e9309e50e20cdae7964589bdf5e8020d4d1c12d",
   "build": "2026.08.10",
   "min_upgradable_from": "0.0.0",
-  "notes": "mejoras de ux"
+  "notes": "historial remoto"
 }
