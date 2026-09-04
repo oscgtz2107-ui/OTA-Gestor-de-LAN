@@ -1,11 +1,11 @@
 {
   "_comentario": "Manifiesto OTA. FORMATO PLANO: lo lee fw_updater.cpp tal cual. Lo publica el repo privado, donde vive la clave.",
-  "version": "2.4.1",
-  "versionCode": 20401,
-  "url": "https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases/download/fw-v2.4.1/firmware.bin",
-  "sha256": "98de9802976d96b98c4da3bcbae4c0c66a54039f398feeb8c5a5e503dfa6f905",
-  "signature": "3045022008faf79e514b951a3e0cf1ad3f6323a3a6a33aaba014471462f287b71f911ba7022100dd6f47c13a04d0d5b552a55b2e9309e50e20cdae7964589bdf5e8020d4d1c12d",
-  "build": "2026.08.10",
+  "version": "2.6.2",
+  "versionCode": 20602,
+  "url": "https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases/download/fw-v2.6.2/firmware.bin",
+  "sha256": "852c481ca247076a35a77e6e93fae12ff121618795cf01325bc4ccec891d8d48",
+  "signature": "3046022100fd6ba5eed7b44be7d92859830d0274b7db9c13ca8e6eb4f198ac1c9d0f1c3b0b0221009657e4a450a136b983de2eec2a06240c9b3164df8997c823b17070e00c3b3007",
+  "build": "2026.09.04",
   "min_upgradable_from": "0.0.0",
-  "notes": "historial remoto"
+  "notes": "mejoras de ux"
 }
