@@ -2,12 +2,12 @@
   "_comentario": "Manifiesto de version de la app. Lo publica el workflow de release del repo privado.",
   "_formato": 1,
   "latest": {
-    "versionName": "0.7.0",
-    "versionCode": 700,
+    "versionName": "0.8.0",
+    "versionCode": 800,
     "build": "2026-09-04",
     "url": "https://github.com/oscgtz2107-ui/OTA-Gestor-de-LAN/releases/latest/download/gestor-de-lan.apk",
-    "sha256": "6bddfcacc7459fb110b615904c6541d23e4f855548f5d753ce6f0afd0d0de5a5",
+    "sha256": "1c679d0352df2b970090a5eb98f7bd30a9f8bed3f44b0ba8449240304020d5f4",
     "minSdk": 26,
-    "notes": "Control de la red principal rediseñado: el interruptor espera y se enciende solo al desactivar el DHCP del router. La app sigue a la placa aunque cambie de IP. Escáner con enfoque por toque y brillo. Al re-emparejar, la placa muestra su código en pantalla."
+    "notes": "Al iniciar sesión, tus placas se cargan solas (ya no hay que emparejar de cero al reinstalar). Y en 'Añadir placa', el botón ahora dice 'Ver otras formas'."
   }
 }
